@@ -1,0 +1,7 @@
+/* Todo item들을 보여주기 위한 용도 */
+.TodoList {
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 20px;
+}
