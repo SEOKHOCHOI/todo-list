@@ -1,0 +1,20 @@
+.Template {
+  padding-top: 20px;
+
+  /* viewport값에 맞게 전체를 보여주는 값 */
+  max-height: 100vh;
+}
+
+/* 할 일 */
+.title {
+  width: 90vw;
+
+  /* 가운데 위치위한 auto */
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgba(4, 33, 192, 0.945);
+}
