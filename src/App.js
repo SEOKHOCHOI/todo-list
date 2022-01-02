@@ -64,7 +64,7 @@ const App = () => {
   /* 삭제 */
   const onRemove = id => {
     onInsertToggle();
-    setTodos(todos => todos.filter(todo => todo.id !== id));
+    setTodos(todos => todos.filter(todo => (todo.id !== id)));
   }; 
 
   return(

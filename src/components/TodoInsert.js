@@ -1,11 +1,11 @@
 // TOdo를 입력
 // 플러스 버튼 누르면 팝업 형식으로 나타나게.
-import React, {useEffect, useState} from "react";
+import React, { useState, useEffect } from "react";
 import { MdAddCircle } from 'react-icons/md';
 import {TiTrash, TiPencil} from "react-icons/ti";
 import './TodoInsert.css'
 
-const TodoInsert = ({ onInsertToggle, onInsertTodo, selectedTodo }) => {
+const TodoInsert = ({ onInsertToggle, onInsertTodo, selectedTodo, onRemove }) => {
   const [value, setValue] = useState("");
 
   // input이 변경될 때마다 실행
