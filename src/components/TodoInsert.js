@@ -5,7 +5,13 @@ import { MdAddCircle } from 'react-icons/md';
 import {TiTrash, TiPencil} from "react-icons/ti";
 import './TodoInsert.css'
 
-const TodoInsert = ({ onInsertToggle, onInsertTodo, selectedTodo, onRemove }) => {
+const TodoInsert = ({ 
+  onInsertToggle, 
+  onInsertTodo, 
+  selectedTodo, 
+  onRemove, 
+  onUpdate,
+ }) => {
   const [value, setValue] = useState("");
 
   // input이 변경될 때마다 실행
@@ -31,11 +37,13 @@ const TodoInsert = ({ onInsertToggle, onInsertTodo, selectedTodo, onRemove }) =>
   return (
     <div>
       <div className="background" onClick={onInsertToggle}></div>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={selectedTodo ? () => {onUpdate(selectedTodo.di, selectedTodo.text)} : onSubmit}>
         <input placeholder="please type" value={value} onChange={onChange}></input>
-        {selectedTodo ? (
+        {selectedTodo ? ( 
           <div className="rewrite">
-            <TiPencil />
+            <TiPencil onClick={() => {
+              onUpdate(selectedTodo.id, value);
+            }}/>
             <TiTrash onClick={() => {onRemove(selectedTodo.id)}}/> 
           </div>
         ) : (<button type="submit">
