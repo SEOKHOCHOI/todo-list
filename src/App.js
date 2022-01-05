@@ -13,17 +13,17 @@ const App = () => {
   const [todos, setTodos] = useState([
     {
       id: 1,
-      text: "할일 1",
+      text: "HTML, CSS",
       checked: true,
     },
     {
       id: 2,
-      text: "할일 2",
+      text: "JavaScript",
       checked: false,
     },
     {
       id: 3,
-      text: "할일 3",
+      text: "React",
       checked: true,
     },
   ]);

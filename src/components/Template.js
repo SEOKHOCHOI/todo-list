@@ -6,7 +6,7 @@ import "./Template.css";
 const Template = ({ children, todoLength }) => {
   return (
     <div className="template">
-      <div className="title"> 내가 할 일 ({todoLength})</div>
+      <div className="title"> 빨리 끝내자 ({todoLength})</div>
       <div>{children}</div>
     </div>
   );

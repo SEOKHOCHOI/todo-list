@@ -16,6 +16,7 @@
 }
 
 form {
+  position: relative;
   margin-left: 10%;
   position: fixed;
   top: 40%;
@@ -34,6 +35,10 @@ form {
 }
 
 form > input {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
   background: none;
   outline: none;
   border: none;
