@@ -27,7 +27,6 @@ const App = () => {
       checked: true,
     },
   ]);
-
   const onInsertToggle = () => {
     if (selectedTodo) {
       setSelectedTodo(null);
@@ -83,6 +82,7 @@ const App = () => {
       onInsertToggle={onInsertToggle} 
       onChangeSelectedTodo={onChangeSelectedTodo} 
     />
+    
     <div className="add-todo-button" onClick={onInsertToggle}>
       <MdAddCircle />
     </div>

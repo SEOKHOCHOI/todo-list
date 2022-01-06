@@ -6,15 +6,38 @@
 }
 
 /* 할 일 */
-.title {
+.title-left {
   width: 45vw;
 
-  /* 가운데 위치위한 auto */
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  justify-content: left;
 
-  padding-bottom: 20px;
+  padding: 20px 0 30px 40px;
   font-size: 1.5rem;
   font-weight: bold;
   color: rgba(4, 33, 192, 0.945);
+}
+.title-right {
+  width: 45vw;
+
+  display: flex;
+  justify-content: left;
+
+  padding: 20px 0 30px 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgba(192, 4, 67, 0.945);
+}
+
+.separation {
+  display: flex;
+  justify-content: space-between;
+}
+.separation-left {
+  width: 100px;
+  padding-left: 130px;
+}
+.separation-right {
+  width: 100px;
+  padding-right: 800px;
 }

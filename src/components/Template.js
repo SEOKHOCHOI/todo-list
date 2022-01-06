@@ -6,8 +6,16 @@ import "./Template.css";
 const Template = ({ children, todoLength }) => {
   return (
     <div className="template">
-      <div className="title"> 빨리 끝내자 ({todoLength})</div>
-      <div>{children}</div>
+      <span className='separation'>
+        <span className='separation-left'>
+          <div className="title-left"> 빨리 끝내자 ({todoLength})</div>
+          <span>{children}</span>
+        </span>
+        <span>
+          <div className="title-right"> 끝냈다!! ({todoLength})</div>
+          <span className='separation-right'>{children}</span>
+        </span>
+      </span>
     </div>
   );
 }
