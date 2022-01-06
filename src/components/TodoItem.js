@@ -3,7 +3,7 @@ import React from 'react';
 import { MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md'
 import "./TodoItem.css";
 
-const TodoItem = ({ todo, onCheckToggle,CheckToggle2, onInsertToggle, onChangeSelectedTodo }) => {
+const TodoItem = ({ todo, onCheckToggle, onInsertToggle, onChangeSelectedTodo }) => {
   const { id, text, checked } = todo;
   return(
     <div className="TodoItem">
