@@ -32,6 +32,11 @@
   flex: 1;
 }
 
+/*
+  content에 체크가 돼있을 경우 
+  해당 컴포넌트의 text 클래스를 가진 요소에게 
+  text-decoration을 line-throught로 줘 취소선을 만들었다.
+*/
 .content.checked .text {
   color: red;
   text-decoration: line-through;

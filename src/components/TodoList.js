@@ -1,11 +1,22 @@
 // 할 일의 목록
+
 import React from 'react';
 import TodoItem from './TodoItem';
 import "./TodoList.css";
 
+/*
+  App.js에서 todos 인자를 받아와.
+  todos는 할 일 목록 객체가 들어있는 배열이야.
+  이 배열을 todos.map() 즉, map 함수를 이용해서 보여줘.
+  todos 배열은 useState 함수를 이용해서 만들어.
+*/
 const TodoList = ({ todos, onCheckToggle, onInsertToggle, onChangeSelectedTodo }) => { 
   return(
     <div className="TodoList">
+      {/*
+        onCheckToggle을 TodoList에 보내준 후
+        TodoList가 받은 함수를 TodoItem에 그대로 전달해 주었다.
+      */}
       {todos.map(todo => (
         <TodoItem todo={todo} key={todo.id} 
           onCheckToggle={onCheckToggle} 
