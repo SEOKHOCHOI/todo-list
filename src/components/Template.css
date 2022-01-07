@@ -5,7 +5,7 @@
   max-height: 100vh;
 }
 
-/* 할 일 */
+/* 내가 할 일 */
 .title-left {
   width: 45vw;
 
@@ -35,9 +35,9 @@
 }
 .separation-left {
   width: 100px;
-  padding-left: 130px;
+  margin-left: 130px;
 }
 .separation-right {
   width: 100px;
-  padding-right: 800px;
+  margin-right: 800px;
 }
