@@ -20,6 +20,7 @@ const Template = ({ children, todoLength }) => {
         <span className='separation-right'>
           <div className="title-right"> 끝냈다!! ({todoLength})</div>
           <button onClick={() => {alert('hi')}}>gd</button>
+          <span>{children}</span>
         </span>
       </span>
     </div>
