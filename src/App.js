@@ -6,18 +6,20 @@ import TodoInsert from './components/TodoInsert';
 import { MdAddCircle } from 'react-icons/md';
 
 let nextId = 4;
+let xeId=1;
 
 const App = () => {
   /*
     글자를 눌렀을 때 해당되는 글씨도 받아져 뜨도록 하기위해 만듬.
   */
   const [selectedTodo, setSelectedTodo] = useState(null);
-
+  const [selectedTodoa, setSelectedTodoa] = useState(null);
   /* 
     플러스 버튼을 눌렀을때만 나오기 위한 toggle 값,
     입력 토글이니 이름은 insertToggle 기본값은 false.
   */
   const [insertToggle, setInsertToggle] = useState(false);
+  const [insertTogglea, setInsertTogglea] = useState(false);
   /*
     todos: 할 일 목록
     setTodos: 할 일 목록들을 조작할 수 있는 함수.
@@ -37,6 +39,13 @@ const App = () => {
     {
       id: 3,
       text: "React",
+      checked: true,
+    },
+  ]);
+  const [todosa, setTodosa] = useState([
+    {
+      id: 1,
+      text: "abcd",
       checked: true,
     },
   ]);
@@ -62,7 +71,12 @@ const App = () => {
     }
     setInsertToggle(prev => !prev)
   };
-
+  const onInsertTogglea = () => {
+    if (selectedTodoa) {
+      setSelectedTodo(null);
+    }
+    setInsertToggle(prev => !prev)
+  };
   /*
     입력한 상태를 value라는 값으로 TodoInsert 컴포넌트가 가지고 있는데,
     이 value를 추가 버튼을 누를시 배열에 넣어 해야 할 일에 추가해주면 된다.
@@ -86,7 +100,6 @@ const App = () => {
         text,
         checked: false,
       }
-
       /*
         위에서 설정한 setTodos 함수를 사용.
         변경되기 전의 값을 기억하고 있어야 되기에 변경 전의 값 자체를 변경시키면 안된다.
@@ -98,7 +111,19 @@ const App = () => {
       nextId++;
     }
   };
-
+  const onInsertTodoa = (texta) => {
+    if (texta === "") {
+    return alert("할 일을 입력해주세요.");
+        id: xeId,
+    } else {
+        const todoa = {
+        texta,
+        checked: false,
+      }
+      setTodosa(todosa => todosa.concat(todoa));
+      xeId++;
+    }
+  };
   /*
     클릭 하면 체크가 되고 체크가 해제 돼야 된다. 그 기능이다.
     할 일 배열을 다루기 때문에 App.js 컴포넌트에서 작성해주었다.
@@ -121,7 +146,11 @@ const App = () => {
       todos.map(todo => 
         (todo.id === id ? {...todo, checked: !todo.checked} : todo)))
   };
-
+  const onCheckTogglea = (id) => {
+    setTodosa(todosa => 
+      todosa.map(todoa => 
+        (todoa.id === id ? {...todoa, checked: !todoa.checked} : todoa)))
+  };
   /*
     todos 배열을 건드리기 때문에 App.js 컴포넌트에서 작업함.
     이 함수를 TodoItem 컴포넌트로 보내줘.
@@ -129,7 +158,9 @@ const App = () => {
   const onChangeSelectedTodo = (todo) => {
     setSelectedTodo(todo);
   };
-
+  const onChangeSelectedTodoa = (todoa) => {
+    setSelectedTodo(todoa);
+  };
   /* 
   쓰레기통 아이콘 눌러 삭제 
   삭제를 했으니 창이 닫히겠지? 그를 위한 onInsertToggle.
@@ -142,7 +173,10 @@ const App = () => {
     onInsertToggle();
     setTodos(todos => todos.filter(todo => (todo.id !== id)));
   }; 
-
+  const onRemovea = id => {
+    onInsertTogglea();
+    setTodosa(todosa => todosa.filter(todoa => (todoa.id !== id)));
+  };
   /*
   작성된걸 수정 
   인자는 id와 text를 받아왔고
@@ -158,7 +192,10 @@ const App = () => {
     onInsertToggle();
     setTodos(todos => todos.map(todo => todo.id === id ? {...todo, text} : todo))
   }
-
+  const onUpdatea = (id, text) => {
+    onInsertTogglea();
+    setTodos(todosa => todosa.map(todoa => todoa.id === id ? {...todoa, text} : todoa))
+  }
   return(
     /*
       내가 할 일(0): 에서 0부분이 할 일 갯수가 바껴도 그대로이다.
@@ -171,6 +208,12 @@ const App = () => {
       onInsertToggle={onInsertToggle} 
       onChangeSelectedTodo={onChangeSelectedTodo} 
     />
+    <TodoList todosa={todosa}
+    onCheckTogglea={onCheckTogglea} 
+    onInsertTogglea={onInsertTogglea} 
+    onChangeSelectedTodoa={onChangeSelectedTodoa} 
+    ></TodoList>
+  
 
     {/* 플러스 모양 버튼 */}
     <div className="add-todo-button" onClick={onInsertToggle}>
@@ -191,6 +234,14 @@ const App = () => {
         onUpdate={onUpdate}
       />
     )}
+    <TodoInsert
+    selectedTodoa={selectedTodoa}
+    onInsertTogglea={onInsertTogglea} 
+    onInsertTodoa={onInsertTodoa} 
+    onRemovea={onRemovea}
+    onUpdatea={onUpdatea}>
+    
+    </TodoInsert>
   </Template>
   );
 };
