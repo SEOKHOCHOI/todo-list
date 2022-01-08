@@ -22,7 +22,8 @@ const TodoList = ({ todos, onCheckToggle, onInsertToggle, onChangeSelectedTodo }
           onCheckToggle={onCheckToggle} 
           onInsertToggle={onInsertToggle} 
           onChangeSelectedTodo={onChangeSelectedTodo}
-        />))
+        />
+        ))
       }
     </div>
   );

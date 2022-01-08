@@ -9,18 +9,20 @@ import "./Template.css";
   Template.js에서 todoLength를 받아올 수 있으니까 빨리 끝내자 부분에 0대신
   받아온 todoLength값을 넣어줘.
 */
-const Template = ({ children, todoLength }) => {
+
+
+const Template = ({ todos, todosa, todoLength }) => {
   return (
     <div className="template">
       <span className='separation'>
         <span className='separation-left'>
           <div className="title-left"> 빨리 끝내자 ({todoLength})</div>
-          <span>{children}</span>
+          <span>{todos}</span>
         </span>
         <span className='separation-right'>
           <div className="title-right"> 끝냈다!! ({todoLength})</div>
           <button onClick={() => {alert('hi')}}>gd</button>
-          <span>{children}</span>
+          <span>{todosa}</span>
         </span>
       </span>
     </div>
