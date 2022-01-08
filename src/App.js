@@ -13,6 +13,8 @@ function App() {
     let filteredTodo = todoList.filter((each) => each !== work)
     setTodoList(filteredTodo);
     setDoneList([...doneList, work]);
+
+    console.log('haha');
   }
   
 
