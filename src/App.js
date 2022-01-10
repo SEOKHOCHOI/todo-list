@@ -16,7 +16,11 @@ function App() {
 
     console.log('haha');
   }
-  
+  const cancel = (xgo) => {
+    let filteredDone = doneList.filter((each) => each !== xgo)
+    setDoneList(filteredDone);
+    setTodoList([...todoList, xgo]);
+  }
 
   return(
     <div className="App">
@@ -39,11 +43,14 @@ function App() {
         <caption>완료목록</caption>
         <tbody>
           {
-            doneList.map((work)=>(
-              <tr>
-                <td>{work}</td>
-              </tr>
+            doneList.map((xgo) => (
+              doneList.map((work)=>(
+                <tr>
+                  <td onClick={()=>cancel(xgo)}>{work}</td>
+                </tr>
+              ))
             ))
+            
           }
         </tbody>
       </table>
