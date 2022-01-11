@@ -1,62 +1,56 @@
-import {useState} from 'react';
+import React, { useState } from 'react';
+import Todo from './components/Todo';
 
 function App() {
-  const [todoList, setTodoList] = useState([]);
-  const [doneList, setDoneList] = useState([]);
+  const [todoList, setTodoList] = useState('');
+  const [doneList, setDoneList] = useState('');
+  const [todos, setTodos] = useState([
+    { list: '해야한다!!'},
+    { list: '해야한다!!!'},
+  ]);
 
-  const addWork = () => {
-    let work = window.prompt('할일을 입력하세요');
-    setTodoList([...todoList, work]);
-  }
+  const renderTodos = todos.map(todo=>{
+    return (
+      <Todo todo={todo} key={todo.list} />
+    );
+  });
+  const addTodoList = (event) => {
+    event.preventDefault();
+    setTodos([
+    ...todos,
+    {
+      list: todoList,
+    }])
+    setTodoList('');
+  };
 
-  const done = (work) => {
-    let filteredTodo = todoList.filter((each) => each !== work)
-    setTodoList(filteredTodo);
-    setDoneList([...doneList, work]);
-
-    console.log('haha');
-  }
-  const cancel = (xgo) => {
-    let filteredDone = doneList.filter((each) => each !== xgo)
-    setDoneList(filteredDone);
-    setTodoList([...todoList, xgo]);
-  }
-
-  return(
+  return (
     <div className="App">
-      <button onClick={addWork}>할일 추가</button>
-      <table>
-        <caption>
-          할일목록
-        </caption>
-        <tbody>
-          {
-            todoList.map((work)=>(
-              <tr>
-                <td onClick={()=>done(work)}>{work}</td>
-              </tr>
-            ))
-          }
-        </tbody>
-      </table>
-      <table>
-        <caption>완료목록</caption>
-        <tbody>
-          {
-            doneList.map((xgo) => (
-              doneList.map((work)=>(
-                <tr>
-                  <td onClick={()=>cancel(xgo)}>{work}</td>
-                </tr>
-              ))
-            ))
-            
-          }
-        </tbody>
-      </table>
+      <h1>해야할 일</h1>
+      <form addTodoList={addTodoList}>
+        <input 
+          type="text"
+          value={todoList}
+          placeholder="추가할 내용을 입력하세요."
+          onChange={e => setTodoList(e.target.value)}
+        /><br />
+        <button type="submit">할 일 추가</button>
+        <br />
+        {renderTodos}
+      </form>
+      <form>
+      <h1>완료한 일</h1>
+        <input 
+            type="text"
+            value={doneList}
+            placeholder="삭제할 내용을 입력하세요."
+            onChange={e => setDoneList(e.target.value)}
+        /><br />
+        <button>할 일 삭제</button>
+      </form>
     </div>
   );
-};
+}
 
 export default App;
 
