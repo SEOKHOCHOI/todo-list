@@ -1,53 +1,39 @@
 import React, { useState } from 'react';
 import Todo from './components/Todo';
+import TodoForm from './components/TodoForm';
 
 function App() {
-  const [todoList, setTodoList] = useState('');
-  const [doneList, setDoneList] = useState('');
   const [todos, setTodos] = useState([
-    { list: '해야한다!!'},
-    { list: '해야한다!!!'},
+    // 빈 배열로 시작.
   ]);
 
-  const renderTodos = todos.map(todo=>{
+  const removeTodo = (id) => {
+    setTodos(todos.filter(todo => {
+      return todo.id !== id;
+    }));
+  };
+
+  const renderTodos = todos.length ? todos.map(todo=>{
     return (
-      <Todo todo={todo} key={todo.list} />
+      <Todo 
+        todo={todo} 
+        key={todo.id} 
+        removeTodo={removeTodo}
+        />
     );
-  });
-  const addTodoList = (event) => {
-    event.preventDefault();
+  }) : '추가된 일이 없습니다.';
+  const addTodoList = (todo) => {
     setTodos([
-    ...todos,
-    {
-      list: todoList,
-    }])
-    setTodoList('');
+      ...todos,
+      todo
+    ]);
   };
 
   return (
     <div className="App">
       <h1>해야할 일</h1>
-      <form addTodoList={addTodoList}>
-        <input 
-          type="text"
-          value={todoList}
-          placeholder="추가할 내용을 입력하세요."
-          onChange={e => setTodoList(e.target.value)}
-        /><br />
-        <button type="submit">할 일 추가</button>
-        <br />
-        {renderTodos}
-      </form>
-      <form>
-      <h1>완료한 일</h1>
-        <input 
-            type="text"
-            value={doneList}
-            placeholder="삭제할 내용을 입력하세요."
-            onChange={e => setDoneList(e.target.value)}
-        /><br />
-        <button>할 일 삭제</button>
-      </form>
+      <TodoForm addTodoList={addTodoList} />
+      {renderTodos}
     </div>
   );
 }
