@@ -1,40 +1,35 @@
-import React, { useState } from 'react';
-import Todo from './components/Todo';
-import TodoForm from './components/TodoForm';
+import React from 'react';
+import Navbar from './components/Navbar';
+import routes from './routes';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
+
 
 function App() {
-  const [todos, setTodos] = useState([
-    // 빈 배열로 시작.
-  ]);
-
-  const removeTodo = (id) => {
-    setTodos(todos.filter(todo => {
-      return todo.id !== id;
-    }));
-  };
-
-  const renderTodos = todos.length ? todos.map(todo=>{
-    return (
-      <Todo 
-        todo={todo} 
-        key={todo.id} 
-        removeTodo={removeTodo}
-        />
-    );
-  }) : '추가된 일이 없습니다.';
-  const addTodoList = (todo) => {
-    setTodos([
-      ...todos,
-      todo
-    ]);
-  };
-
   return (
-    <div className="App">
-      <h1>해야할 일</h1>
-      <TodoForm addTodoList={addTodoList} />
-      {renderTodos}
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+          <div className="container">
+            <Switch> 
+              {routes.map(route => {
+                return (
+                  <Route 
+                    key={route.path} 
+                    path={route.path} 
+                    exact
+                  >
+                    <route.component />
+                  </Route>
+                )
+              })}
+            </Switch>
+          </div>
+      </div>
+    </Router> 
   );
 }
 
