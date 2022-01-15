@@ -33,7 +33,7 @@ const TodoForm = ({ addTodoList }) => {
   };
 
   const onSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault();   //이벤트 전파 방지
     if (validateForm()) {
       addTodoList({
         id: Date.now(),
