@@ -1,14 +1,14 @@
-import {useState} from 'react';
+import React from 'react';
+import Navbar from './components/Navbar';
+import routes from './routes';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
 
-function App() {
-  const [todoList, setTodoList] = useState([]);
-  const [doneList, setDoneList] = useState([]);
 
-  const addWork = () => {
-    let work = window.prompt('할일을 입력하세요');
-    setTodoList([...todoList, work]);
-  }
-
+<<<<<<< HEAD
   const done = (work) => {
     let filteredTodo = todoList.filter((each) => each !== work)
     setTodoList(filteredTodo);
@@ -48,8 +48,32 @@ function App() {
         </tbody>
       </table>
     </div>
+=======
+function App() {
+  return (
+    <Router>
+      <div className="App">
+        <Navbar />
+          <div className="container">
+            <Switch> 
+              {routes.map(route => {
+                return (
+                  <Route 
+                    key={route.path} 
+                    path={route.path} 
+                    exact
+                  >
+                    <route.component />
+                  </Route>
+                )
+              })}
+            </Switch>
+          </div>
+      </div>
+    </Router> 
+>>>>>>> new
   );
-};
+}
 
 export default App;
 
