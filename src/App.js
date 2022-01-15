@@ -8,47 +8,6 @@ import {
 } from 'react-router-dom';
 
 
-<<<<<<< HEAD
-  const done = (work) => {
-    let filteredTodo = todoList.filter((each) => each !== work)
-    setTodoList(filteredTodo);
-    setDoneList([...doneList, work]);
-
-    console.log('haha');
-  }
-  
-
-  return(
-    <div className="App">
-      <button onClick={addWork}>할일 추가</button>
-      <table>
-        <caption>
-          할일목록
-        </caption>
-        <tbody>
-          {
-            todoList.map((work)=>(
-              <tr>
-                <td onClick={()=>done(work)}>{work}</td>
-              </tr>
-            ))
-          }
-        </tbody>
-      </table>
-      <table>
-        <caption>완료목록</caption>
-        <tbody>
-          {
-            doneList.map((work)=>(
-              <tr>
-                <td>{work}</td>
-              </tr>
-            ))
-          }
-        </tbody>
-      </table>
-    </div>
-=======
 function App() {
   return (
     <Router>
@@ -71,7 +30,6 @@ function App() {
           </div>
       </div>
     </Router> 
->>>>>>> new
   );
 }
 
