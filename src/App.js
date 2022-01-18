@@ -4,12 +4,12 @@ function App() {
   const [todoList, setTodoList] = useState([]); // 할 일
   const [doneList, setDoneList] = useState([]); // 완료
 
-  const addList = async() => { // 추가
+  const addList = () => { // 추가
     const todo = window.prompt('해야할 일을 적어주세요!');
-    await setTodoList([...todoList, todo]);
+    setTodoList([...todoList, todo]);
   }
 
-  const todoDone = async(number) => { // 완료
+  const todoDone = (number) => { // 완료
     // button 클릭 요소 완료
     const done = todoList.filter((data, index) => index === number);
 
@@ -23,7 +23,7 @@ function App() {
     setTodoList(doneNot);
   }
 
-  const todoNotDone = async(number) => { 
+  const todoNotDone = (number) => { 
     const todo = doneList.filter((data, index) => index === number);
     const todoNot = doneList.filter((data, index) => index !== number);
     setTodoList([...todoList, todo]);
