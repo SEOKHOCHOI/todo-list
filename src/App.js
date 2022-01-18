@@ -22,20 +22,15 @@ function App() {
     // 완료한 일 제외 state 값
     setTodoList(doneNot);
   }
-  const todoNotDone = async(number) => { // 완료
-    // button 클릭 요소 완료
+
+  const todoNotDone = async(number) => { 
     const todo = doneList.filter((data, index) => index === number);
-
-    // button 클릭 요소 제외
     const todoNot = doneList.filter((data, index) => index !== number);
-
-    // 완료한 일 state값
     setTodoList([...todoList, todo]);
-
-    // 완료한 일 제외 state 값
     setDoneList(todoNot);
   }
   return(
+
     <div className="App">
       <p>해야할 일</p>
       {
@@ -46,6 +41,7 @@ function App() {
           </ul>
         ))
       }
+
       <p>완료한 일</p>
       {
         doneList.map((data, index)=>(
