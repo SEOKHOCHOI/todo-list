@@ -1,37 +1,5 @@
 import React, {useState} from 'react';
-import { Button,Modal } from 'react-bootstrap';
-
-function Example() {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
-  );
-}
-
-
+import { Button } from 'react-bootstrap';
 
 function App() {
   const [todoList, setTodoList] = useState([]); // 할 일
@@ -74,7 +42,7 @@ function App() {
       {
         todoList.map((data, index)=>(
           <li key={'todo_'+index+1}>{data}
-            <Button onClick={()=>{todoDone(index)}}>완료</Button>
+            <Button variant="danger" onClick={()=>{todoDone(index)}}>완료</Button>{' '}
           </li>
         ))
       }
@@ -85,13 +53,13 @@ function App() {
       {
         doneList.map((data, index)=>(
           <li key={'done_'+index+1}>{data}
-            <Button onClick={()=>{todoNotDone(index)}}>완료</Button>
+            <Button variant="success" onClick={()=>{todoNotDone(index)}}>되돌리기</Button>{' '}
           </li>
         ))
       }
       </ol>
-      <Example/>
-      {/* <p onClick={addList}>추가하기</p> */}
+      
+      <p onClick={addList}>추가하기</p>
     </div>
     );
 };
