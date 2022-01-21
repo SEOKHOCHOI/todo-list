@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
 import { Button } from 'react-bootstrap';
+import Navbars from './components/Navbars';
+import './App.css';
 
 function App() {
+
   const [todoList, setTodoList] = useState([]); // 할 일
   const [doneList, setDoneList] = useState([]); // 완료
 
@@ -37,29 +40,32 @@ function App() {
   return(
 
     <div className="App">
-      <p>해야할 일</p>
-      <ol>
-      {
-        todoList.map((data, index)=>(
-          <li key={'todo_'+index+1}>{data}
-            <Button variant="danger" onClick={()=>{todoDone(index)}}>완료</Button>{' '}
-          </li>
-        ))
-      }
-      </ol>
+      <Navbars />
+      <div className="topView">
+        <p className="font02">해야할 일</p>
+        <ol>
+        {
+          todoList.map((data, index)=>(
+            <li key={'todo_'+index+1}>{data}
+              <Button variant="danger" onClick={()=>{todoDone(index)}}>완료</Button>{' '}
+            </li>
+          ))
+        }
+        </ol>
 
-      <p>완료한 일</p>
-      <ol>
-      {
-        doneList.map((data, index)=>(
-          <li key={'done_'+index+1}>{data}
-            <Button variant="success" onClick={()=>{todoNotDone(index)}}>되돌리기</Button>{' '}
-          </li>
-        ))
-      }
-      </ol>
-      
-      <p onClick={addList}>추가하기</p>
+        <p className="font02">완료한 일</p>
+        <ol>
+        {
+          doneList.map((data, index)=>(
+            <li key={'done_'+index+1}>{data}
+              <Button variant="success" onClick={()=>{todoNotDone(index)}}>되돌리기</Button>{' '}
+            </li>
+          ))
+        }
+        </ol>
+        
+        <Button variant="dark" onClick={addList}>추가하기</Button>{' '}
+      </div>
     </div>
     );
 };

@@ -1,0 +1,12 @@
+.topView {
+  margin-left: 120px;
+  border: 1px solid black;
+  width: 1296px;
+  border-radius: 5px;
+}
+
+.font02 {
+  background-color: cornflowerblue;
+  height: 30px;
+  color: whitesmoke;
+}
