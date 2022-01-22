@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import { Button } from 'react-bootstrap';
 import Navbars from './components/Navbars';
 import './App.css';
+import Todos from './components/Todos';
+
 
 function App() {
 
@@ -46,9 +48,7 @@ function App() {
         <ol>
         {
           todoList.map((data, index)=>(
-            <li key={'todo_'+index+1}>{data}
-              <Button variant="danger" onClick={()=>{todoDone(index)}}>완료</Button>{' '}
-            </li>
+            <Todos key={'todo_'+index+1} data={data} variant="danger" onClick={()=>{todoDone(index)}}>완료</Todos>
           ))
         }
         </ol>
@@ -57,9 +57,7 @@ function App() {
         <ol>
         {
           doneList.map((data, index)=>(
-            <li key={'done_'+index+1}>{data}
-              <Button variant="success" onClick={()=>{todoNotDone(index)}}>되돌리기</Button>{' '}
-            </li>
+            <Todos key={'done_'+index+1} data={data} variant="success" onClick={()=>{todoNotDone(index)}}>되돌리기</Todos>
           ))
         }
         </ol>
