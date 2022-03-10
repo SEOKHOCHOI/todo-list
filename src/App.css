@@ -1,8 +1,9 @@
 .topView {
-  margin-left: 120px;
   border: 1px solid black;
   width: 1296px;
   border-radius: 5px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .font02 {
